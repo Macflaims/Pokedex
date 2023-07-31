@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>POKEDEX</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container pt-5">
+      <section class="section-1">
+        <h1 id="titulo">Pokedex</h1>
+        <h5> Lista de los <strong id="total-pokemones"></strong> Pokemons!</h5>
+        <span> Prueba haciendo click sobre un pokemon para ver más características!</span>
+
+      </section>
+      <span id="cargando" class="loader"></span>
+        <div class="table-responsive contenedor-tabla d-flex align-items-center">
+          <table id="tabla" class="table table-striped ">
+            <thead>     
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">ID</th>
+                <th scope="col">Pokémon</th>
+                <th scope="col">Tipo 1</th>
+                <th scope="col">Tipo 2</th>
+                
+              </tr>
+            </thead>
+            
+          </table>
+         
+        </div>
+
+        <nav id="nav" aria-label="Page navigation example section-3">
+          <ul id="paginador" class="pagination justify-content-center">
+            
+          </ul>
+        </nav>
+        
+        
+        <div class="container">
+          <div class="modal fade popup" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5 popup-nombre" id="staticBackdropLabel"></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                  <div class="card" >
+                    <img id="popup-imagen" src="" class="card-img-top" alt="">
+                    <div class="card-body">
+                      <div class="row pb-5">
+                        <div id="popup-tipo-1" class="col text-center"></div>
+                        <div id="popup-tipo-2" class="col text-center"></div>
+                      </div>
+
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                              <th scope="row">Altura:</th>
+                              <td id="popup-altura"></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Peso:</th>
+                            <td id="popup-peso"></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Habilidades:</th>
+                            <td id="popup-habilidad-1"></td>
+                          </tr>
+                          <tr>
+                            <th></th>
+                            <td id="popup-habilidad-2"></td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./src/main.js" type="module"></script>
+</body>
+</html>
