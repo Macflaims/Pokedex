@@ -14,7 +14,7 @@ function cargarPokedex(url = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=$
   cargarPokemon(url, PAGINA_ACTUAL);
 }
 
-function cargarPokemon(url, PAGINA_ACTUAL = 1){
+function cargarPokemon(url, PAGINA_ACTUAL){
 fetch(url)
     .then((r)=> r.json())
     .then((r)=> {
