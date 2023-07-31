@@ -1,0 +1,96 @@
+body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+}
+
+.contenedor-tabla{
+        min-height: 70vh;
+}
+
+.oculto{
+        visibility: hidden;
+}
+
+.escondido{
+        display: none;
+}
+
+.deshabilitado{
+        pointer-events: none;
+}
+
+.loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 48px;
+        height: 48px;
+        border: 5px solid #000000;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        }
+    
+        @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+} 
+
+#popup-imagen{
+        min-height: 348px;
+}
+
+.tabla-pokemon{
+        cursor: pointer;
+}
+
+/* POKEMON TYPES */
+.tipo{  border: 2px solid #000;
+        border-radius: 20px;
+        padding: 4px 16px;
+        margin: 4px; 
+        color: white;
+}
+
+.grass{background:#7AC74C}
+
+.poison{background:#A33EA1}
+
+.normal{background:#A8A77A}
+
+.fire{background:#EE8130}
+
+.water{background:#6390F0}
+
+.electric{background:#F7D02C}
+
+.ice{background:#96D9D6}
+
+.fighting{background:#C22E28}
+
+.ground{background:#E2BF65}
+
+.flying{background:#A98FF3}
+
+.psychic{background:#F95587}
+
+.bug{background:#A6B91A}
+
+.rock{background:#B6A136}
+
+.ghost{background:#735797}
+
+.dragon{background:#6F35FC}
+
+.dark{background:#705746}
+
+.steel{background:#B7B7CE}
+
+.fairy{background:#D685AD}
