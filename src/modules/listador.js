@@ -11,10 +11,10 @@ function cargarPokedex(url = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=$
   mostrarCargando();
   eliminarPaginasAnteriores();
   bloquearPaginador(); 
-  cargaPokemon(url, PAGINA_ACTUAL);
+  cargarPokemon(url, PAGINA_ACTUAL);
 }
 
-function cargaPokemon(url, PAGINA_ACTUAL = 1){
+function cargarPokemon(url, PAGINA_ACTUAL = 1){
 fetch(url)
     .then((r)=> r.json())
     .then((r)=> {
