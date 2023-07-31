@@ -11,7 +11,11 @@ function cargarPokedex(url = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=$
   mostrarCargando();
   eliminarPaginasAnteriores();
   bloquearPaginador(); 
-    fetch(url)
+  cargaPokemon(url, PAGINA_ACTUAL);
+}
+
+function cargaPokemon(url, PAGINA_ACTUAL = 1){
+fetch(url)
     .then((r)=> r.json())
     .then((r)=> {
        let {count: totalPokemones, results: pokemones, next:paginaSiguiente, previous: paginaAnterior}= r;
@@ -23,7 +27,6 @@ function cargarPokedex(url = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=$
        manejarCambioPagina(paginaAnterior, paginaSiguiente, CANTIDAD_DE_ITEMS_PAGINADOR, PAGINA_ACTUAL, POKEMONES_POR_PAG)
     })
 }
-
 
 async function cargarListadoPokemones(pokemones) {
     for (const pokemon of pokemones) {
