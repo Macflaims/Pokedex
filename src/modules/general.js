@@ -1,4 +1,4 @@
-import { POKEMONES_POR_PAG } from "./listador.js";
+import { POKEMONES_POR_PAG, cargarPokedex } from "./listador.js";
 
 function mostrarTextoTotalPokemones(totalPokemones){
     document.querySelector("#total-pokemones").textContent = totalPokemones
@@ -39,5 +39,7 @@ function bloquearPaginador(){
 function desbloquearPaginador(){
     document.querySelector("#nav").classList.remove("deshabilitado")
 }
+
+document.querySelector("#nav-titulo").addEventListener("click", ()=>{cargarPokedex()});
 
 export {mostrarTextoTotalPokemones, agregarMayuscula, comprobarCargaTabla, mostrarCargando, bloquearPaginador, desbloquearPaginador, agregarComa}
