@@ -4,10 +4,20 @@ body {
         padding: 0;
 }
 
+/* DOM INTERFAZ */
 .contenedor-tabla{
         min-height: 70vh;
 }
 
+#popup-imagen{
+        min-height: 348px;
+}
+
+.tabla-pokemon{
+        cursor: pointer;
+}
+
+/* DOM UTILIDADES */
 .oculto{
         visibility: hidden;
 }
@@ -20,6 +30,7 @@ body {
         pointer-events: none;
 }
 
+/* ANIMACION CARGA */
 .loader {
         position: absolute;
         top: 50%;
@@ -43,15 +54,7 @@ body {
         }
 } 
 
-#popup-imagen{
-        min-height: 348px;
-}
-
-.tabla-pokemon{
-        cursor: pointer;
-}
-
-/* POKEMON TYPES */
+/* POKEMON TIPOS */
 .tipo{  border: 2px solid #000;
         border-radius: 20px;
         padding: 4px 16px;
