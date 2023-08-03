@@ -1,5 +1,5 @@
 const URL= "http://127.0.0.1:5500/index.html"
-const POKEMONES_POR_PAG = 10;
+const POKEMONES_POR_PAG = 2;
 const CANTIDAD_DE_ITEMS_PAGINADOR = 7;
 
 
@@ -11,7 +11,7 @@ describe("Pokedex con Pokeapi", () => {
     describe('Comprueba que los componentes se muestren correctamente', () => {
     
       it("Se asegura de que el título sea visible", () => {
-        cy.get("#titulo").should("be.visible");
+        cy.get("#nav-titulo").should("be.visible");
       })
 
       it("Se asegura de que se muestren correctamente los pokemon", () => {
@@ -57,4 +57,12 @@ describe('Comprueba el correcto funcionamiento del cambio de página', () => {
       cy.get('body').find(".popup").should("not.be.visible");
     }    
   });
+
+  it('Se asegura que al hacer click sobre el título vuelva a la primer página', () => {
+    cy.visit(URL);
+    cy.get('#paginador').find('.page-item').eq(3).click();
+    cy.wait(500);
+    cy.get("#nav-titulo").click();
+    cy.get('#tabla').find('.tabla-pokemon').should('have.length', POKEMONES_POR_PAG);
+  })
 })
