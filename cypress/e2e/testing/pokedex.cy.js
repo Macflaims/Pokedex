@@ -1,5 +1,5 @@
 const URL = 'http://127.0.0.1:5500/index.html';
-const POKEMONES_POR_PAG = 10;
+const POKEMONES_POR_PAG = 6;
 const CANTIDAD_DE_ITEMS_PAGINADOR = 7;
 
 describe('Pokedex con Pokeapi', () => {
