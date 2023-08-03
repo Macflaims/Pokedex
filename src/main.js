@@ -1,3 +1,3 @@
-import { cargarPokedex } from "./modules/listador.js";
+import { cargarPokedex } from './modules/listador.js';
 
 cargarPokedex();
