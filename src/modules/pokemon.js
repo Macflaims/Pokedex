@@ -9,17 +9,16 @@ export function mostrarPokemon(pokemon, i) {
   $tabla.appendChild($contenedor);
   $contenedor.appendChild($fila);
 
-    const { name: nombre, url: url} = pokemon
-    const id = url.split("/")[6]
+  const { name: nombre, url } = pokemon;
+  const id = url.split('/')[6];
 
-    $fila.appendChild(cargarImagen(nombre, id));
-    $fila.appendChild(cargarNumero(id));
-    $fila.appendChild(cargarNombre(nombre));
+  $fila.appendChild(cargarImagen(nombre, id));
+  $fila.appendChild(cargarNumero(id));
+  $fila.appendChild(cargarNombre(nombre));
 
-    $fila.addEventListener('click', () => {
-      mostrarPopup(nombre, url);
-    });
-    
+  $fila.addEventListener('click', () => {
+    mostrarPopup(nombre, url);
+  });
 }
 
 function cargarNombre(nombre) {
@@ -42,4 +41,3 @@ function cargarImagen(nombre, id) {
   $imagenContenedor.appendChild($imagen);
   return $imagenContenedor;
 }
-
