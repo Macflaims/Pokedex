@@ -29,6 +29,12 @@ fetch(url)
 }
 
 async function cargarListadoPokemones(pokemones) {
+  pokemones.forEach(async (pokemon) => {
+    mostrarPokemon(pokemon);
+  });
+}
+/*
+async function cargarListadoPokemones(pokemones) {
     for (const pokemon of pokemones) {
       const { name: nombre } = pokemon;
       const r = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
@@ -36,5 +42,5 @@ async function cargarListadoPokemones(pokemones) {
       mostrarPokemon(pokemonData)
     }
 }
-
+*/
 export {cargarPokedex, POKEMONES_POR_PAG}
