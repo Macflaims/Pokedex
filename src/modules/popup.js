@@ -2,10 +2,30 @@ import { agregarMayuscula, agregarComa } from './general.js';
 
 const $popup = new bootstrap.Modal('#staticBackdrop');
 
-export function mostrarPopup(nombre, imagen, altura, peso, tipo1, tipo2, habilidad1, habilidad2) {
+export function mostrarPopup(nombre, url) {
+  
   const $nombre = document.querySelector('.popup-nombre');
   $nombre.textContent = agregarMayuscula(nombre);
-
+  
+  mostrarCargandoPopup()
+  $popup.show();
+  fetch(url)
+    .then((r)=> r.json())
+    .then((pokemon)=> {
+      const {
+        id: numero,
+        weight: peso,
+        height: altura,
+        sprites: { front_default: imagen },
+        types: {
+          0: { type: { name: tipo1 } = {} } = {},
+          1: { type: { name: tipo2 } = {} } = {},
+        },
+        abilities: {
+          0: { ability: { name: habilidad1 } = {} } = {},
+          1: { ability: { name: habilidad2 } = {} } = {},
+        },
+      } = pokemon;
   const $imagen = document.querySelector('#popup-imagen');
   $imagen.setAttribute('src', imagen);
   $imagen.setAttribute('alt', `Imagen del pokemon ${nombre}`);
@@ -39,5 +59,19 @@ export function mostrarPopup(nombre, imagen, altura, peso, tipo1, tipo2, habilid
     $habilidad2.textContent = agregarMayuscula(habilidad2);
   }
 
-  $popup.show();
+  mostrarContenidoPopup()
+})}
+
+function mostrarCargandoPopup(){
+  const contenido = document.querySelector(".card");
+  const cargando = document.querySelector("#cargando-popup")
+  contenido.classList.add("oculto");
+  cargando.classList.remove("oculto")
+}
+
+function mostrarContenidoPopup(){
+  const contenido = document.querySelector(".card");
+  const cargando = document.querySelector("#cargando-popup")
+  contenido.classList.remove("oculto");
+  cargando.classList.add("oculto")
 }
