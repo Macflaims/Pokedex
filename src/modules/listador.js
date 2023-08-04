@@ -33,14 +33,5 @@ async function cargarListadoPokemones(pokemones) {
     mostrarPokemon(pokemon);
   });
 }
-/*
-async function cargarListadoPokemones(pokemones) {
-    for (const pokemon of pokemones) {
-      const { name: nombre } = pokemon;
-      const r = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
-      const pokemonData = await r.json();
-      mostrarPokemon(pokemonData)
-    }
-}
-*/
+
 export {cargarPokedex, POKEMONES_POR_PAG}
