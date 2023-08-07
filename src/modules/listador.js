@@ -3,7 +3,7 @@ import {
 } from './general.js';
 import { mostrarPokemon } from './pokemon.js';
 import { manejarCambioPagina, eliminarPaginasAnteriores } from './paginador.js';
-import {traerPagina} from './api.js';
+import { traerPagina } from './api.js';
 
 const POKEMONES_POR_PAG = 6;
 const CANTIDAD_DE_ITEMS_PAGINADOR = 5;
@@ -12,22 +12,19 @@ async function cargarPokedex(url = `https://pokeapi.co/api/v2/pokemon?offset=0&l
   mostrarCargando();
   eliminarPaginasAnteriores();
   bloquearPaginador();
-  traerPagina(url, PAGINA_ACTUAL).then(pagina => cargarPokemones(pagina, PAGINA_ACTUAL))
-
-  ;
+  traerPagina(url, PAGINA_ACTUAL).then((pagina) => cargarPokemones(pagina, PAGINA_ACTUAL));
 }
 
 function cargarPokemones(pagina, PAGINA_ACTUAL) {
-      const {
-        count: totalPokemones, results: pokemones, next: paginaSiguiente, previous: paginaAnterior,
-      } = pagina;
-      mostrarTextoTotalPokemones(totalPokemones);
-      cargarListadoPokemones(pokemones).then(() => {
-        comprobarCargaTabla();
-        desbloquearPaginador();
-      });
-      manejarCambioPagina(paginaAnterior, paginaSiguiente, CANTIDAD_DE_ITEMS_PAGINADOR, PAGINA_ACTUAL, POKEMONES_POR_PAG);
-    ;
+  const {
+    count: totalPokemones, results: pokemones, next: paginaSiguiente, previous: paginaAnterior,
+  } = pagina;
+  mostrarTextoTotalPokemones(totalPokemones);
+  cargarListadoPokemones(pokemones).then(() => {
+    comprobarCargaTabla();
+    desbloquearPaginador();
+  });
+  manejarCambioPagina(paginaAnterior, paginaSiguiente, CANTIDAD_DE_ITEMS_PAGINADOR, PAGINA_ACTUAL, POKEMONES_POR_PAG);
 }
 
 async function cargarListadoPokemones(pokemones) {
