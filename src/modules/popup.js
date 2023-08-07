@@ -1,16 +1,15 @@
 import { agregarMayuscula, agregarComa } from './general.js';
+import { traerPokemon } from './api.js';
 
 const $popup = new bootstrap.Modal('#staticBackdrop');
 
-export function mostrarPopup(nombre, url) {
+export async function mostrarPopup(nombre, url) {
   const $nombre = document.querySelector('.popup-nombre');
   $nombre.textContent = agregarMayuscula(nombre);
 
   mostrarCargandoPopup();
   $popup.show();
-  fetch(url)
-    .then((r) => r.json())
-    .then((pokemon) => {
+traerPokemon(nombre).then((pokemon) => {
       const {
         id: numero,
         weight: peso,
