@@ -2,6 +2,8 @@ import {
   cargarPaginaDeLocalStorage, guardarPaginaLocalStorage, cargarPokedemonDeLocalStorage, guardarPokedemonLocalStorage,
 } from './storage.js';
 
+import { mapearListadoPokemones, mapearPokemon } from '../mapeadores/pokemon.js';
+
 export async function traerPagina(url, PAGINA_ACTUAL) {
   try {
     const pagina = await cargarPaginaDeLocalStorage(PAGINA_ACTUAL);
@@ -11,8 +13,9 @@ export async function traerPagina(url, PAGINA_ACTUAL) {
     return pagina;
   } catch (e) {
     const pagina = await fetch(url)
-      .then((pagina) => pagina.json())
-      .then((pagina) => {
+      .then((r) => r.json())
+      .then((r) => {
+        const pagina = mapearListadoPokemones(r)
         guardarPaginaLocalStorage(pagina, PAGINA_ACTUAL);
         return pagina;
       });
@@ -30,8 +33,9 @@ export async function traerPokemon(nombre) {
   } catch (e) {
     const url = `https://pokeapi.co/api/v2/pokemon/${nombre}`;
     const pokemon = await fetch(url)
-      .then((pokemon) => pokemon.json())
-      .then((pokemon) => {
+      .then((r) => r.json())
+      .then((r) => {
+        const pokemon = mapearPokemon(r);
         guardarPokedemonLocalStorage(nombre, pokemon);
         return pokemon;
       });
