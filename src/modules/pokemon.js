@@ -1,7 +1,7 @@
 import { agregarMayuscula } from './general.js';
 import { mostrarPopup } from './popup.js';
 
-export function mostrarPokemon(pokemon, i) {
+export function mostrarListaPokemon(pokemon) {
   const $tabla = document.querySelector('#tabla');
   const $contenedor = document.createElement('tbody');
   $contenedor.classList.add('tabla-pokemon');
