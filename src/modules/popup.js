@@ -1,60 +1,45 @@
 import { agregarMayuscula, agregarComa } from './general.js';
-import { traerPokemon } from './api.js';
+import { traerPokemon } from '../storage/api.js';
 
 const $popup = new bootstrap.Modal('#staticBackdrop');
 
-export async function mostrarPopup(nombre, url) {
+export async function mostrarPopup(nombre) {
   const $nombre = document.querySelector('.popup-nombre');
   $nombre.textContent = agregarMayuscula(nombre);
-
   mostrarCargandoPopup();
   $popup.show();
   traerPokemon(nombre).then((pokemon) => {
-    const {
-      id: numero,
-      weight: peso,
-      height: altura,
-      sprites: { front_default: imagen },
-      types: {
-        0: { type: { name: tipo1 } = {} } = {},
-        1: { type: { name: tipo2 } = {} } = {},
-      },
-      abilities: {
-        0: { ability: { name: habilidad1 } = {} } = {},
-        1: { ability: { name: habilidad2 } = {} } = {},
-      },
-    } = pokemon;
     const $imagen = document.querySelector('#popup-imagen');
-    $imagen.setAttribute('src', imagen);
-    $imagen.setAttribute('alt', `Imagen del pokemon ${nombre}`);
+    $imagen.setAttribute('src',pokemon.foto);
+    $imagen.setAttribute('alt', `Imagen del pokemon ${pokemon.nombre}`);
 
     const $tipo1 = document.querySelector('#popup-tipo-1');
     $tipo1.className = '';
-    $tipo1.textContent = tipo1.toUpperCase();
-    $tipo1.classList.add('tipo', 'col', 'text-center', tipo1);
+    $tipo1.textContent = pokemon.tipos[0].toUpperCase();
+    $tipo1.classList.add('tipo', 'col', 'text-center', pokemon.tipos[0]);
 
     const $tipo2 = document.querySelector('#popup-tipo-2');
-    if (tipo2 === undefined) {
+    if (!pokemon.tipos[1]) {
       $tipo2.classList.add('escondido');
     } else {
       $tipo2.className = '';
-      $tipo2.textContent = tipo2.toUpperCase();
-      $tipo2.classList.add('tipo', 'col', 'text-center', tipo2);
+      $tipo2.textContent = pokemon.tipos[1].toUpperCase();
+      $tipo2.classList.add('tipo', 'col', 'text-center', pokemon.tipos[1]);
       $tipo2.classList.remove('escondido');
     }
 
     const $altura = document.querySelector('#popup-altura');
-    $altura.textContent = `${agregarComa(altura)}mts`;
+    $altura.textContent = `${agregarComa(pokemon.altura)}mts`;
 
     const $peso = document.querySelector('#popup-peso');
-    $peso.textContent = `${agregarComa(peso)}kg`;
+    $peso.textContent = `${agregarComa(pokemon.peso)}kg`;
 
     const $habilidad1 = document.querySelector('#popup-habilidad-1');
-    $habilidad1.textContent = agregarMayuscula(habilidad1);
+    $habilidad1.textContent = agregarMayuscula(pokemon.habilidades[0]);
 
-    if (habilidad2) {
+    if (pokemon.habilidades[1]) {
       const $habilidad2 = document.querySelector('#popup-habilidad-2');
-      $habilidad2.textContent = agregarMayuscula(habilidad2);
+      $habilidad2.textContent = agregarMayuscula(pokemon.habilidades[1]);
     }
 
     mostrarContenidoPopup();
