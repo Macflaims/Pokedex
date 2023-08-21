@@ -10,7 +10,7 @@ export async function mostrarPopup(nombre) {
   $popup.show();
   traerPokemon(nombre).then((pokemon) => {
     const $imagen = document.querySelector('#popup-imagen');
-    $imagen.setAttribute('src',pokemon.foto);
+    $imagen.setAttribute('src', pokemon.foto);
     $imagen.setAttribute('alt', `Imagen del pokemon ${pokemon.nombre}`);
 
     const $tipo1 = document.querySelector('#popup-tipo-1');

@@ -15,7 +15,7 @@ export async function traerPagina(url, PAGINA_ACTUAL) {
     const pagina = await fetch(url)
       .then((r) => r.json())
       .then((r) => {
-        const pagina = mapearListadoPokemones(r)
+        const pagina = mapearListadoPokemones(r);
         guardarPaginaLocalStorage(pagina, PAGINA_ACTUAL);
         return pagina;
       });
