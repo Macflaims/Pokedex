@@ -12,17 +12,16 @@ async function cargarPokedex(url = `https://pokeapi.co/api/v2/pokemon?offset=0&l
   mostrarCargando();
   eliminarPaginasAnteriores();
   bloquearPaginador();
-
+  
   const pagina = await traerPagina(url, PAGINA_ACTUAL);
   mostrarTextoTotalPokemones(pagina.total);
-
   cargarListadoPokemones(pagina.nombresPokemones).then(() => {
     comprobarCargaTabla();
     desbloquearPaginador();
   });
-
   manejarCambioPagina(pagina.anteriorUrl, pagina.siguienteUrl, CANTIDAD_DE_ITEMS_PAGINADOR, PAGINA_ACTUAL, POKEMONES_POR_PAG);
 }
+
 
 async function cargarListadoPokemones(pokemones) {
   pokemones.forEach(async (pokemon) => {
